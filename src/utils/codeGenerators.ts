@@ -410,7 +410,7 @@ export function generateDashboardHtml(firebaseConfigJson?: string): string {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Prompt', sans-serif; background-color: #0A1326; color: #EDE7DC; }
+    body { font-family: 'Prompt', sans-serif; background-color: #F8F7F4; color: #1E293B; }
     .mono { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
   </style>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -418,20 +418,20 @@ export function generateDashboardHtml(firebaseConfigJson?: string): string {
 </head>
 <body class="min-h-screen">
 
-  <!-- Top Bar for Projector (Formal Navy Theme) -->
-  <header class="border-b border-[#1E2E4E] bg-[#070E1E]/95 backdrop-blur-md px-6 py-4 sticky top-0 z-30 flex items-center justify-between">
+  <!-- Top Bar for Projector (Formal Light Theme) -->
+  <header class="border-b border-[#E5E0D8] bg-white/95 backdrop-blur-md px-6 py-4 sticky top-0 z-30 flex items-center justify-between shadow-xs">
     <div class="flex items-center gap-3">
-      <div class="w-3 h-3 rounded-full bg-blue-400 animate-pulse"></div>
+      <div class="w-3 h-3 rounded-full bg-blue-600 animate-pulse"></div>
       <div>
-        <h1 class="text-xl font-bold tracking-tight text-white">Live Feedback Dashboard</h1>
-        <p class="text-xs text-[#94A3B8]">ระบบแสดงผลความพึงพอใจการอบรมแบบเรียลไทม์ (ธีมทางการ น้ำเงิน เทา เบจ)</p>
+        <h1 class="text-xl font-bold tracking-tight text-[#0F1E36]">Live Feedback Dashboard</h1>
+        <p class="text-xs text-slate-500">ระบบแสดงผลความพึงพอใจการอบรมแบบเรียลไทม์ (ธีมสว่างทางการ)</p>
       </div>
     </div>
     <div class="flex items-center gap-3">
-      <button onclick="exportCSV()" class="px-3.5 py-2 text-xs font-semibold bg-[#121E36] hover:bg-[#1A2B4D] text-[#EDE7DC] rounded-xl border border-[#223354] transition-colors">
+      <button onclick="exportCSV()" class="px-3.5 py-2 text-xs font-semibold bg-white hover:bg-[#FAF8F5] text-slate-700 rounded-xl border border-[#E5E0D8] shadow-2xs transition-colors">
         ดาวน์โหลด CSV
       </button>
-      <button onclick="toggleFullscreen()" class="px-3.5 py-2 text-xs font-semibold bg-[#1D4ED8] hover:bg-blue-600 text-white rounded-xl transition-colors border border-blue-500">
+      <button onclick="toggleFullscreen()" class="px-3.5 py-2 text-xs font-semibold bg-[#1E3A8A] hover:bg-[#1D4ED8] text-white rounded-xl transition-colors shadow-xs">
         เต็มจอโปรเจกเตอร์
       </button>
     </div>
@@ -443,48 +443,48 @@ export function generateDashboardHtml(firebaseConfigJson?: string): string {
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
       
       <!-- Total Respondents -->
-      <div class="bg-[#101C33] border border-[#1E2E4E] rounded-2xl p-5">
-        <span class="text-xs font-medium text-[#94A3B8]">ผู้ตอบทั้งหมด</span>
+      <div class="bg-white border border-[#E5E0D8] rounded-2xl p-5 shadow-xs">
+        <span class="text-xs font-medium text-slate-500">ผู้ตอบทั้งหมด</span>
         <div class="flex items-baseline gap-2 mt-2">
-          <span id="totalCount" class="text-4xl font-bold text-white mono">0</span>
-          <span class="text-sm text-[#94A3B8]">คน</span>
+          <span id="totalCount" class="text-4xl font-bold text-[#0F1E36] mono">0</span>
+          <span class="text-sm text-slate-500">คน</span>
         </div>
-        <p class="text-xs text-blue-400 mt-2">อัปเดตอัตโนมัติ Real-time</p>
+        <p class="text-xs text-blue-600 mt-2 font-medium">อัปเดตอัตโนมัติ Real-time</p>
       </div>
 
       <!-- Overall Mean -->
-      <div class="bg-[#101C33] border border-[#1E2E4E] rounded-2xl p-5">
-        <span class="text-xs font-medium text-[#94A3B8]">คะแนนเฉลี่ยรวม</span>
+      <div class="bg-white border border-[#E5E0D8] rounded-2xl p-5 shadow-xs">
+        <span class="text-xs font-medium text-slate-500">คะแนนเฉลี่ยรวม</span>
         <div class="flex items-baseline gap-2 mt-2">
-          <span id="overallAvg" class="text-4xl font-bold text-white mono">0.00</span>
-          <span class="text-sm text-[#94A3B8]">/ 5.00</span>
+          <span id="overallAvg" class="text-4xl font-bold text-[#1E3A8A] mono">0.00</span>
+          <span class="text-sm text-slate-500">/ 5.00</span>
         </div>
-        <p id="overallTier" class="text-xs text-amber-200 font-semibold mt-2">-</p>
+        <p id="overallTier" class="text-xs text-[#8C6D3F] font-semibold mt-2">-</p>
       </div>
 
       <!-- Rating Scale Breakdown -->
-      <div class="bg-[#101C33] border border-[#1E2E4E] rounded-2xl p-5 md:col-span-2">
-        <span class="text-xs font-medium text-[#94A3B8] mb-2 block">เกณฑ์การแปลผล (มาตรฐาน 5 ระดับ)</span>
+      <div class="bg-white border border-[#E5E0D8] rounded-2xl p-5 md:col-span-2 shadow-xs">
+        <span class="text-xs font-medium text-slate-500 mb-2 block">เกณฑ์การแปลผล (มาตรฐาน 5 ระดับ)</span>
         <div class="grid grid-cols-5 gap-1.5 text-center text-xs">
-          <div class="p-2 bg-[#0B1428] rounded-lg border border-[#1E2E4E]">
-            <span class="block text-blue-300 font-bold font-mono">4.51 - 5.00</span>
-            <span class="text-[11px] text-slate-200">มากที่สุด</span>
+          <div class="p-2 bg-[#EFF6FF] rounded-lg border border-blue-200">
+            <span class="block text-blue-700 font-bold font-mono">4.51 - 5.00</span>
+            <span class="text-[11px] text-slate-700">มากที่สุด</span>
           </div>
-          <div class="p-2 bg-[#0B1428] rounded-lg border border-[#1E2E4E]">
-            <span class="block text-blue-400 font-bold font-mono">3.51 - 4.50</span>
-            <span class="text-[11px] text-slate-200">มาก</span>
+          <div class="p-2 bg-[#EFF6FF] rounded-lg border border-blue-200">
+            <span class="block text-blue-600 font-bold font-mono">3.51 - 4.50</span>
+            <span class="text-[11px] text-slate-700">มาก</span>
           </div>
-          <div class="p-2 bg-[#0B1428] rounded-lg border border-[#1E2E4E]">
-            <span class="block text-[#D4AF37] font-bold font-mono">2.51 - 3.50</span>
-            <span class="text-[11px] text-slate-200">ปานกลาง</span>
+          <div class="p-2 bg-[#FAF5ED] rounded-lg border border-[#E5D7BA]">
+            <span class="block text-[#B88E1C] font-bold font-mono">2.51 - 3.50</span>
+            <span class="text-[11px] text-slate-700">ปานกลาง</span>
           </div>
-          <div class="p-2 bg-[#0B1428] rounded-lg border border-[#1E2E4E]">
-            <span class="block text-slate-300 font-bold font-mono">1.51 - 2.50</span>
-            <span class="text-[11px] text-slate-300">น้อย</span>
+          <div class="p-2 bg-slate-100 rounded-lg border border-slate-200">
+            <span class="block text-slate-600 font-bold font-mono">1.51 - 2.50</span>
+            <span class="text-[11px] text-slate-600">น้อย</span>
           </div>
-          <div class="p-2 bg-[#0B1428] rounded-lg border border-[#1E2E4E]">
-            <span class="block text-slate-400 font-bold font-mono">1.00 - 1.50</span>
-            <span class="text-[11px] text-slate-400">น้อยที่สุด</span>
+          <div class="p-2 bg-slate-100 rounded-lg border border-slate-200">
+            <span class="block text-slate-500 font-bold font-mono">1.00 - 1.50</span>
+            <span class="text-[11px] text-slate-500">น้อยที่สุด</span>
           </div>
         </div>
       </div>
@@ -494,19 +494,19 @@ export function generateDashboardHtml(firebaseConfigJson?: string): string {
     <!-- Main Content Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
       
-      <!-- 5 Questions (Donut Rings / Bars) -->
-      <div class="lg:col-span-7 bg-[#101C33] border border-[#1E2E4E] rounded-2xl p-6">
-        <h2 class="text-base font-semibold text-white mb-1">ค่าเฉลี่ยความพึงพอใจรายข้อ (5 ด้าน)</h2>
-        <p class="text-xs text-[#94A3B8] mb-6">คำนวณแบบเรียลไทม์จากทุกคำตอบของผู้เข้าอบรม</p>
+      <!-- 5 Questions (Bars) -->
+      <div class="lg:col-span-7 bg-white border border-[#E5E0D8] rounded-2xl p-6 shadow-xs">
+        <h2 class="text-base font-semibold text-[#0F1E36] mb-1">ค่าเฉลี่ยความพึงพอใจรายข้อ (5 ด้าน)</h2>
+        <p class="text-xs text-slate-500 mb-6">คำนวณแบบเรียลไทม์จากทุกคำตอบของผู้เข้าอบรม</p>
         
         <div class="space-y-5" id="questionsContainer"></div>
       </div>
 
       <!-- Donut Chart for Score Distribution -->
-      <div class="lg:col-span-5 bg-[#101C33] border border-[#1E2E4E] rounded-2xl p-6 flex flex-col justify-between">
+      <div class="lg:col-span-5 bg-white border border-[#E5E0D8] rounded-2xl p-6 flex flex-col justify-between shadow-xs">
         <div>
-          <h2 class="text-base font-semibold text-white mb-1">การกระจายคะแนน (Score Distribution)</h2>
-          <p class="text-xs text-[#94A3B8] mb-4">กราฟวงกลมโดนัทแสดงสัดส่วน 1 ถึง 5 ดาว</p>
+          <h2 class="text-base font-semibold text-[#0F1E36] mb-1">การกระจายคะแนน (Score Distribution)</h2>
+          <p class="text-xs text-slate-500 mb-4">กราฟวงกลมโดนัทแสดงสัดส่วน 1 ถึง 5 ดาว</p>
           
           <div id="donutContainer" class="flex flex-col items-center justify-center py-2"></div>
         </div>
@@ -515,10 +515,10 @@ export function generateDashboardHtml(firebaseConfigJson?: string): string {
     </div>
 
     <!-- Recent Suggestions Feed -->
-    <div class="bg-[#101C33] border border-[#1E2E4E] rounded-2xl p-6">
+    <div class="bg-white border border-[#E5E0D8] rounded-2xl p-6 shadow-xs">
       <div class="flex items-center justify-between mb-4">
-        <h2 class="text-base font-semibold text-white">ข้อเสนอแนะล่าสุด</h2>
-        <span id="suggestionsCount" class="text-xs text-[#94A3B8] mono">0 ข้อความ</span>
+        <h2 class="text-base font-semibold text-[#0F1E36]">ข้อเสนอแนะล่าสุด</h2>
+        <span id="suggestionsCount" class="text-xs text-slate-500 mono">0 ข้อความ</span>
       </div>
       <div id="suggestionsList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-[360px] overflow-y-auto"></div>
     </div>
@@ -604,11 +604,11 @@ export function generateDashboardHtml(firebaseConfigJson?: string): string {
         return \`
           <div>
             <div class="flex justify-between items-baseline text-xs mb-1.5">
-              <span class="font-medium text-slate-200">\${q.title}</span>
-              <span class="font-bold text-blue-300 mono text-sm">\${score.toFixed(2)} <span class="text-xs text-[#94A3B8]">/ 5.0</span></span>
+              <span class="font-medium text-slate-800">\${q.title}</span>
+              <span class="font-bold text-[#1E3A8A] mono text-sm">\${score.toFixed(2)} <span class="text-xs text-slate-500 font-normal">/ 5.0</span></span>
             </div>
-            <div class="w-full bg-[#0A1326] h-3.5 rounded-xl overflow-hidden p-0.5 border border-[#1E2E4E]">
-              <div class="bg-gradient-to-r from-[#1D4ED8] to-[#3B82F6] h-full rounded-lg transition-all duration-500" style="width: \${percent}%"></div>
+            <div class="w-full bg-slate-100 h-3.5 rounded-xl overflow-hidden p-0.5 border border-slate-200">
+              <div class="bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] h-full rounded-lg transition-all duration-500" style="width: \${percent}%"></div>
             </div>
           </div>
         \`;
@@ -617,7 +617,7 @@ export function generateDashboardHtml(firebaseConfigJson?: string): string {
 
     function renderDonutChart(dist) {
       const total = Object.values(dist).reduce((a, b) => a + b, 0);
-      const colors = { 5: '#1D4ED8', 4: '#3B82F6', 3: '#D4AF37', 2: '#94A3B8', 1: '#64748B' };
+      const colors = { 5: '#1D4ED8', 4: '#2563EB', 3: '#D4AF37', 2: '#94A3B8', 1: '#64748B' };
       const labels = { 5: '5 ดาว (มากที่สุด)', 4: '4 ดาว (มาก)', 3: '3 ดาว (ปานกลาง)', 2: '2 ดาว (น้อย)', 1: '1 ดาว (น้อยที่สุด)' };
       
       const size = 180, stroke = 26, r = (size - stroke) / 2, c = 2 * Math.PI * r;
@@ -636,12 +636,12 @@ export function generateDashboardHtml(firebaseConfigJson?: string): string {
         const val = dist[star] || 0;
         const pct = total > 0 ? Math.round((val / total) * 100) : 0;
         return \`
-          <div class="flex items-center justify-between text-xs p-1.5 rounded-lg bg-[#0A1326] border border-[#1E2E4E]">
+          <div class="flex items-center justify-between text-xs p-1.5 rounded-lg bg-[#FAF8F5] border border-[#E8E2D8]">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full" style="background-color: \${colors[star]}"></span>
-              <span class="text-slate-200">\${labels[star]}</span>
+              <span class="text-slate-800">\${labels[star]}</span>
             </div>
-            <span class="font-mono text-amber-200">\${val} ครั้ง (\${pct}%)</span>
+            <span class="font-mono text-[#1E3A8A] font-semibold">\${val} ครั้ง (\${pct}%)</span>
           </div>
         \`;
       }).join('');
@@ -650,12 +650,12 @@ export function generateDashboardHtml(firebaseConfigJson?: string): string {
         <div class="flex flex-col sm:flex-row items-center gap-6 w-full">
           <div class="relative shrink-0" style="width:\${size}px; height:\${size}px;">
             <svg width="\${size}" height="\${size}" class="transform -rotate-90">
-              <circle cx="\${size/2}" cy="\${size/2}" r="\${r}" fill="transparent" stroke="#1E2E4E" stroke-width="\${stroke}" />
+              <circle cx="\${size/2}" cy="\${size/2}" r="\${r}" fill="transparent" stroke="#E2E8F0" stroke-width="\${stroke}" />
               \${circlesHtml}
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span class="text-xl font-bold font-mono text-white">\${total}</span>
-              <span class="text-[10px] text-amber-200">คำตอบ</span>
+              <span class="text-2xl font-bold font-mono text-[#0F1E36]">\${total}</span>
+              <span class="text-[10px] text-[#8C6D3F] font-medium">คำตอบ</span>
             </div>
           </div>
           <div class="flex-1 w-full space-y-1.5">\${legendHtml}</div>
@@ -667,15 +667,15 @@ export function generateDashboardHtml(firebaseConfigJson?: string): string {
       document.getElementById('suggestionsCount').textContent = list.length + ' ข้อความ';
       const el = document.getElementById('suggestionsList');
       if (list.length === 0) {
-        el.innerHTML = '<p class="text-xs text-[#64748B] italic col-span-3 text-center py-6">ยังไม่มีข้อเสนอแนะ</p>';
+        el.innerHTML = '<p class="text-xs text-slate-400 italic col-span-3 text-center py-6">ยังไม่มีข้อเสนอแนะ</p>';
         return;
       }
       el.innerHTML = list.map(item => \`
-        <div class="p-3.5 bg-[#0A1326] border border-[#1E2E4E] rounded-xl">
-          <p class="text-xs text-[#EDE7DC] leading-relaxed mb-2">"\${item.suggestion}"</p>
-          <div class="flex justify-between text-[11px] text-[#94A3B8]">
+        <div class="p-3.5 bg-[#FAF8F5] border border-[#E8E2D8] rounded-xl shadow-2xs">
+          <p class="text-xs text-[#1E293B] leading-relaxed mb-2">"\${item.suggestion}"</p>
+          <div class="flex justify-between text-[11px] text-slate-500">
             <span>\${new Date(item.timestamp).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}</span>
-            <span class="mono text-blue-300 font-bold">\${item.averageScore.toFixed(2)} ★</span>
+            <span class="mono text-[#1E3A8A] font-bold">\${item.averageScore.toFixed(2)} ★</span>
           </div>
         </div>
       \`).join('');

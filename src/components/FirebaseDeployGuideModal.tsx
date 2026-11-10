@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Copy, Check, Download, Terminal, Flame, Database, Globe, HelpCircle, Save } from 'lucide-react';
+import { X, Copy, Check, Download, Flame, Database, Globe, HelpCircle, Save } from 'lucide-react';
 import {
   generateSurveyHtml,
   generateDashboardHtml,
@@ -80,40 +80,40 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-4xl max-h-[90vh] bg-[#0F1E36] rounded-3xl shadow-2xl border border-[#1E2E4E] flex flex-col overflow-hidden text-slate-100">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-3xl shadow-2xl border border-[#E5E0D8] flex flex-col overflow-hidden text-slate-800">
         
-        {/* Header (Formal Navy & Beige) */}
-        <div className="px-6 py-4 border-b border-[#1E2E4E] bg-[#0A1326] flex items-center justify-between shrink-0">
+        {/* Header (Formal Light Navy & Warm Beige) */}
+        <div className="px-6 py-4 border-b border-[#E5E0D8] bg-[#FAF8F5] flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-[#1A2B4D] border border-[#2B4068] text-amber-200 flex items-center justify-center">
-              <Flame className="w-5 h-5" />
+            <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 text-[#1E3A8A] flex items-center justify-center shadow-2xs">
+              <Flame className="w-5 h-5 text-amber-500" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-white">
+              <h2 className="text-base font-bold text-[#0F1E36]">
                 คู่มือตั้งค่า Firebase และโค้ดแยก 2 ไฟล์
               </h2>
-              <p className="text-xs text-[#94A3B8]">
-                วิธีตั้งค่า Firebase Realtime Database ฟรี พร้อมกราฟวงกลมโดนัทและธีมทางการ
+              <p className="text-xs text-slate-500">
+                วิธีตั้งค่า Firebase Realtime Database ฟรี พร้อมกราฟวงกลมโดนัท (ธีมสว่างทางการ)
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-[#121E36] hover:bg-[#1A2B4D] border border-[#1E2E4E] flex items-center justify-center text-[#94A3B8] hover:text-white transition-colors"
+            className="w-8 h-8 rounded-full bg-white hover:bg-[#F3EFEA] border border-[#E5E0D8] flex items-center justify-center text-slate-500 hover:text-[#0F1E36] transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Navigation Tabs */}
-        <div className="flex items-center gap-1 px-6 pt-3 border-b border-[#1E2E4E] bg-[#070E1E] overflow-x-auto text-xs shrink-0">
+        <div className="flex items-center gap-1 px-6 pt-3 border-b border-[#E5E0D8] bg-[#FAF8F5]/80 overflow-x-auto text-xs shrink-0">
           <button
             onClick={() => setActiveTab('guide')}
             className={`px-4 py-2.5 font-semibold rounded-t-xl transition-colors border-b-2 flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'guide'
-                ? 'border-blue-500 text-blue-300 bg-[#0F1E36]'
-                : 'border-transparent text-[#94A3B8] hover:text-white'
+                ? 'border-[#1E3A8A] text-[#1E3A8A] bg-white shadow-2xs'
+                : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
             <HelpCircle className="w-4 h-4" />
@@ -124,8 +124,8 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
             onClick={() => setActiveTab('survey')}
             className={`px-4 py-2.5 font-semibold rounded-t-xl transition-colors border-b-2 flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'survey'
-                ? 'border-blue-500 text-blue-300 bg-[#0F1E36]'
-                : 'border-transparent text-[#94A3B8] hover:text-white'
+                ? 'border-[#1E3A8A] text-[#1E3A8A] bg-white shadow-2xs'
+                : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
             <Globe className="w-4 h-4" />
@@ -136,8 +136,8 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
             onClick={() => setActiveTab('dashboard')}
             className={`px-4 py-2.5 font-semibold rounded-t-xl transition-colors border-b-2 flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'dashboard'
-                ? 'border-blue-500 text-blue-300 bg-[#0F1E36]'
-                : 'border-transparent text-[#94A3B8] hover:text-white'
+                ? 'border-[#1E3A8A] text-[#1E3A8A] bg-white shadow-2xs'
+                : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
             <Database className="w-4 h-4" />
@@ -148,8 +148,8 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
             onClick={() => setActiveTab('config')}
             className={`px-4 py-2.5 font-semibold rounded-t-xl transition-colors border-b-2 flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'config'
-                ? 'border-blue-500 text-blue-300 bg-[#0F1E36]'
-                : 'border-transparent text-[#94A3B8] hover:text-white'
+                ? 'border-[#1E3A8A] text-[#1E3A8A] bg-white shadow-2xs'
+                : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
             <Flame className="w-4 h-4" />
@@ -158,28 +158,28 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
         </div>
 
         {/* Tab Content Body */}
-        <div className="flex-1 overflow-y-auto p-6 text-slate-700 dark:text-slate-300">
+        <div className="flex-1 overflow-y-auto p-6 bg-white text-slate-700">
           
           {/* TAB 1: Step-by-Step Guide */}
           {activeTab === 'guide' && (
             <div className="space-y-6 max-w-3xl">
-              <div className="p-4 bg-indigo-50 dark:bg-indigo-950/40 rounded-2xl border border-indigo-200 dark:border-indigo-900/60 text-xs text-indigo-900 dark:text-indigo-200 leading-relaxed">
+              <div className="p-4 bg-[#EFF6FF] rounded-2xl border border-blue-200 text-xs text-[#1E3A8A] leading-relaxed">
                 <span className="font-bold">สรุปสั้น:</span> สามารถใช้งานแอปนี้ได้ทันทีใน AI Studio ผ่านระบบ Real-time ในตัว หรือหากต้องการนำไฟล์ HTML ทั้ง 2 ไปโฮสต์บนเซิร์ฟเวอร์ของตนเองพร้อม Firebase Realtime Database แพ็กเกจฟรี (Spark Plan) สามารถทำตาม 4 ขั้นตอนนี้ได้เลยครับ
               </div>
 
               {/* Step 1 */}
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">
+                  <span className="w-6 h-6 rounded-full bg-[#1E3A8A] text-white font-bold text-xs flex items-center justify-center">
                     1
                   </span>
-                  <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+                  <h3 className="font-bold text-sm text-[#0F1E36]">
                     สร้างโปรเจกต์บน Firebase Console (ฟรี 100%)
                   </h3>
                 </div>
-                <div className="pl-8 text-xs space-y-1.5 text-slate-600 dark:text-slate-400">
-                  <p>1. ไปที่ <a href="https://console.firebase.google.com" target="_blank" rel="noreferrer" className="text-indigo-600 underline font-medium">console.firebase.google.com</a> แล้วล็อกอินด้วยบัญชี Google</p>
-                  <p>2. กด <strong>"Add project"</strong> (สร้างโปรเจกต์) ตั้งชื่อโปรเจกต์ เช่น <code className="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 rounded font-mono">training-eval-live</code></p>
+                <div className="pl-8 text-xs space-y-1.5 text-slate-600">
+                  <p>1. ไปที่ <a href="https://console.firebase.google.com" target="_blank" rel="noreferrer" className="text-blue-600 underline font-medium">console.firebase.google.com</a> แล้วล็อกอินด้วยบัญชี Google</p>
+                  <p>2. กด <strong>"Add project"</strong> ตั้งชื่อโปรเจกต์ เช่น <code className="px-1.5 py-0.5 bg-slate-100 rounded font-mono text-slate-800">training-eval-live</code></p>
                   <p>3. กด Next ข้าม Google Analytics ได้ หรือจะเปิดไว้ก็ได้ แล้วกด Create Project</p>
                 </div>
               </div>
@@ -187,41 +187,41 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
               {/* Step 2 */}
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">
+                  <span className="w-6 h-6 rounded-full bg-[#1E3A8A] text-white font-bold text-xs flex items-center justify-center">
                     2
                   </span>
-                  <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+                  <h3 className="font-bold text-sm text-[#0F1E36]">
                     เปิดใช้งาน Firebase Realtime Database
                   </h3>
                 </div>
-                <div className="pl-8 text-xs space-y-2 text-slate-600 dark:text-slate-400">
+                <div className="pl-8 text-xs space-y-2 text-slate-600">
                   <p>1. เมนูด้านซ้าย เลือก <strong>Build</strong> → <strong>Realtime Database</strong></p>
                   <p>2. กดปุ่ม <strong>"Create Database"</strong></p>
                   <p>3. เลือกตำแหน่งเซิร์ฟเวอร์ เช่น <strong>Singapore (asia-southeast1)</strong> เพื่อความเร็วสูงสุดในไทย</p>
                   <p>4. ในหน้าถัดไป เลือก <strong>"Start in test mode"</strong> หรือตั้งค่า Rules ตามขั้นตอนที่ 3 ด้านล่าง</p>
-                  <p>5. คัดลอก <strong>Database URL</strong> เช่น <code className="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 rounded font-mono text-indigo-500">https://xxxx-default-rtdb.asia-southeast1.firebasedatabase.app</code></p>
+                  <p>5. คัดลอก <strong>Database URL</strong> เช่น <code className="px-1.5 py-0.5 bg-slate-100 rounded font-mono text-[#1E3A8A]">https://xxxx-default-rtdb.asia-southeast1.firebasedatabase.app</code></p>
                 </div>
               </div>
 
               {/* Step 3 */}
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">
+                  <span className="w-6 h-6 rounded-full bg-[#1E3A8A] text-white font-bold text-xs flex items-center justify-center">
                     3
                   </span>
-                  <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+                  <h3 className="font-bold text-sm text-[#0F1E36]">
                     ตั้งค่า Security Rules ให้ผู้เข้าอบรมส่งคะแนนได้โดยไม่ต้องล็อกอิน
                   </h3>
                 </div>
-                <div className="pl-8 text-xs space-y-2 text-slate-600 dark:text-slate-400">
+                <div className="pl-8 text-xs space-y-2 text-slate-600">
                   <p>ไปที่แท็บ <strong>Rules</strong> ในหน้า Realtime Database แล้ววาง JSON ด้านล่างนี้ จากนั้นกด <strong>Publish</strong>:</p>
                   <div className="relative">
-                    <pre className="p-3 bg-slate-950 text-slate-200 rounded-xl font-mono text-[11px] overflow-x-auto">
+                    <pre className="p-3 bg-slate-900 text-slate-200 rounded-xl font-mono text-[11px] overflow-x-auto">
                       {rulesCode}
                     </pre>
                     <button
                       onClick={() => handleCopy(rulesCode, 'rules')}
-                      className="absolute top-2 right-2 px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded text-[11px] flex items-center gap-1 transition-colors"
+                      className="absolute top-2 right-2 px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-white rounded text-[11px] flex items-center gap-1 transition-colors"
                     >
                       {copiedKey === 'rules' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
                       <span>{copiedKey === 'rules' ? 'คัดลอกแล้ว' : 'คัดลอก Rules'}</span>
@@ -233,16 +233,16 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
               {/* Step 4 */}
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">
+                  <span className="w-6 h-6 rounded-full bg-[#1E3A8A] text-white font-bold text-xs flex items-center justify-center">
                     4
                   </span>
-                  <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+                  <h3 className="font-bold text-sm text-[#0F1E36]">
                     วิธี Deploy ขึ้นโฮสต์ฟรี (Firebase Hosting / GitHub Pages)
                   </h3>
                 </div>
-                <div className="pl-8 text-xs space-y-3 text-slate-600 dark:text-slate-400">
-                  <p className="font-medium text-slate-800 dark:text-slate-200">ทางเลือก A: ใช้ Firebase Hosting ผ่านคำสั่ง Terminal (แนะนำ)</p>
-                  <div className="p-3 bg-slate-950 text-slate-200 rounded-xl font-mono text-[11px] space-y-1">
+                <div className="pl-8 text-xs space-y-3 text-slate-600">
+                  <p className="font-medium text-[#0F1E36]">ทางเลือก A: ใช้ Firebase Hosting ผ่านคำสั่ง Terminal (แนะนำ)</p>
+                  <div className="p-3 bg-slate-900 text-slate-200 rounded-xl font-mono text-[11px] space-y-1">
                     <div className="text-slate-400"># 1. ติดตั้ง firebase-tools (ถ้ายังไม่มี)</div>
                     <div className="text-emerald-400">npm install -g firebase-tools</div>
                     <div className="text-slate-400 pt-1"># 2. เข้าสู่ระบบ</div>
@@ -253,30 +253,30 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
                     <div className="text-emerald-400">firebase deploy --only hosting</div>
                   </div>
 
-                  <p className="font-medium text-slate-800 dark:text-slate-200 pt-2">ทางเลือก B: นำไฟล์ survey.html และ dashboard.html ไปอัปโหลดบนเว็บโฮสติ้งใดก็ได้</p>
+                  <p className="font-medium text-[#0F1E36] pt-2">ทางเลือก B: นำไฟล์ survey.html และ dashboard.html ไปอัปโหลดบนเว็บโฮสติ้งใดก็ได้</p>
                   <p>เนื่องจากเป็นไฟล์เดี่ยวแบบ Standalone ที่มีโค้ดครบถ้วน (HTML + Tailwind + Firebase SDK) คุณสามารถลากวางบนเว็บเซิร์ฟเวอร์, GitHub Pages, Netlify, Vercel หรือ Apache/Nginx ได้ทันทีโดยไม่ต้อง Build เพิ่มเติม</p>
                 </div>
               </div>
 
               {/* Download buttons for project files */}
-              <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-2">
+              <div className="pt-4 border-t border-[#E5E0D8] flex flex-wrap gap-2">
                 <button
                   onClick={() => handleDownload(surveyCode, 'survey.html')}
-                  className="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 shadow-sm transition-colors"
+                  className="px-3.5 py-2 bg-[#1E3A8A] hover:bg-[#1D4ED8] text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 shadow-sm transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>ดาวน์โหลด survey.html</span>
                 </button>
                 <button
                   onClick={() => handleDownload(dashboardCode, 'dashboard.html')}
-                  className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-colors"
+                  className="px-3.5 py-2 bg-[#FAF8F5] hover:bg-[#F3EFEA] text-slate-800 text-xs font-semibold rounded-xl flex items-center gap-1.5 border border-[#E5E0D8] transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>ดาวน์โหลด dashboard.html</span>
                 </button>
                 <button
                   onClick={() => handleDownload(rulesCode, 'database.rules.json', 'application/json')}
-                  className="px-3.5 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-colors"
+                  className="px-3.5 py-2 bg-[#FAF8F5] hover:bg-[#F3EFEA] text-slate-700 text-xs font-semibold rounded-xl flex items-center gap-1.5 border border-[#E5E0D8] transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>ดาวน์โหลด database.rules.json</span>
@@ -291,7 +291,7 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-sm font-bold text-[#0F1E36]">
                     ไฟล์ที่ 1: survey.html (หน้าแบบสอบถามสำหรับผู้เข้าอบรม)
                   </h3>
                   <p className="text-xs text-slate-500">
@@ -301,14 +301,14 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => handleCopy(surveyCode, 'survey')}
-                    className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors"
+                    className="px-3 py-1.5 bg-[#FAF8F5] hover:bg-[#F3EFEA] text-slate-800 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors border border-[#E5E0D8]"
                   >
-                    {copiedKey === 'survey' ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedKey === 'survey' ? <Check className="w-3.5 h-3.5 text-blue-600" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedKey === 'survey' ? 'คัดลอกแล้ว' : 'คัดลอกโค้ดทั้งหมด'}</span>
                   </button>
                   <button
                     onClick={() => handleDownload(surveyCode, 'survey.html')}
-                    className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-medium flex items-center gap-1 transition-colors"
+                    className="px-3 py-1.5 bg-[#1E3A8A] hover:bg-[#1D4ED8] text-white rounded-lg text-xs font-medium flex items-center gap-1 transition-colors shadow-2xs"
                   >
                     <Download className="w-3.5 h-3.5" />
                     <span>ดาวน์โหลดไฟล์</span>
@@ -317,7 +317,7 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
               </div>
 
               <div className="relative">
-                <pre className="p-4 bg-slate-950 text-slate-200 rounded-2xl font-mono text-[11px] overflow-x-auto max-h-[500px]">
+                <pre className="p-4 bg-slate-900 text-slate-200 rounded-2xl font-mono text-[11px] overflow-x-auto max-h-[500px]">
                   {surveyCode}
                 </pre>
               </div>
@@ -329,24 +329,24 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-sm font-bold text-[#0F1E36]">
                     ไฟล์ที่ 2: dashboard.html (หน้าแสดงผลขึ้นจอโปรเจกเตอร์)
                   </h3>
                   <p className="text-xs text-slate-500">
-                    Real-time Dashboard กราฟแท่งรายข้อ ค่าเฉลี่ยรวม เกณฑ์ 5 ระดับ และดาวน์โหลด CSV
+                    Real-time Dashboard กราฟวงกลมโดนัท ค่าเฉลี่ยรวม เกณฑ์ 5 ระดับ และดาวน์โหลด CSV
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => handleCopy(dashboardCode, 'dashboard')}
-                    className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors"
+                    className="px-3 py-1.5 bg-[#FAF8F5] hover:bg-[#F3EFEA] text-slate-800 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors border border-[#E5E0D8]"
                   >
-                    {copiedKey === 'dashboard' ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedKey === 'dashboard' ? <Check className="w-3.5 h-3.5 text-blue-600" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedKey === 'dashboard' ? 'คัดลอกแล้ว' : 'คัดลอกโค้ดทั้งหมด'}</span>
                   </button>
                   <button
                     onClick={() => handleDownload(dashboardCode, 'dashboard.html')}
-                    className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-medium flex items-center gap-1 transition-colors"
+                    className="px-3 py-1.5 bg-[#1E3A8A] hover:bg-[#1D4ED8] text-white rounded-lg text-xs font-medium flex items-center gap-1 transition-colors shadow-2xs"
                   >
                     <Download className="w-3.5 h-3.5" />
                     <span>ดาวน์โหลดไฟล์</span>
@@ -355,7 +355,7 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
               </div>
 
               <div className="relative">
-                <pre className="p-4 bg-slate-950 text-slate-200 rounded-2xl font-mono text-[11px] overflow-x-auto max-h-[500px]">
+                <pre className="p-4 bg-slate-900 text-slate-200 rounded-2xl font-mono text-[11px] overflow-x-auto max-h-[500px]">
                   {dashboardCode}
                 </pre>
               </div>
@@ -365,12 +365,12 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
           {/* TAB 4: Live Config Input */}
           {activeTab === 'config' && (
             <form onSubmit={handleSaveFirebaseConfig} className="max-w-xl space-y-4">
-              <div className="p-3.5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 rounded-2xl text-xs text-amber-900 dark:text-amber-200">
+              <div className="p-3.5 bg-[#FAF5ED] border border-[#E5D7BA] rounded-2xl text-xs text-[#8C6D3F]">
                 <span className="font-bold">เชื่อมต่อ Real-time ทันที:</span> หากคุณมีโปรเจกต์ Firebase อยู่แล้ว สามารถกรอก <strong>Database URL</strong> และ <strong>API Key</strong> ด้านล่างนี้เพื่อให้อินเทอร์เฟซนี้ซิงก์ข้อมูลกับ Firebase จริงได้ทันที
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-900 dark:text-white mb-1">
+                <label className="block text-xs font-semibold text-[#0F1E36] mb-1">
                   Firebase Realtime Database URL
                 </label>
                 <input
@@ -378,12 +378,12 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
                   placeholder="https://your-project-id-default-rtdb.asia-southeast1.firebasedatabase.app"
                   value={databaseURL}
                   onChange={(e) => setDatabaseURL(e.target.value)}
-                  className="w-full text-xs p-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-mono focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full text-xs p-3 bg-[#FAF8F5] border border-[#E5E0D8] rounded-xl font-mono focus:ring-2 focus:ring-[#1E3A8A] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-900 dark:text-white mb-1">
+                <label className="block text-xs font-semibold text-[#0F1E36] mb-1">
                   API Key (ตัวเลือกเสริมสำหรับ REST / SDK)
                 </label>
                 <input
@@ -391,12 +391,12 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
                   placeholder="AIzaSy..."
                   value={apiKey}
                   onChange={(e) => setApiKey(e.target.value)}
-                  className="w-full text-xs p-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-mono focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full text-xs p-3 bg-[#FAF8F5] border border-[#E5E0D8] rounded-xl font-mono focus:ring-2 focus:ring-[#1E3A8A] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-900 dark:text-white mb-1">
+                <label className="block text-xs font-semibold text-[#0F1E36] mb-1">
                   Project ID (ตัวเลือกเสริม)
                 </label>
                 <input
@@ -404,20 +404,20 @@ export const FirebaseDeployGuideModal: React.FC<FirebaseDeployGuideModalProps> =
                   placeholder="my-training-app"
                   value={projectId}
                   onChange={(e) => setProjectId(e.target.value)}
-                  className="w-full text-xs p-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-mono focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full text-xs p-3 bg-[#FAF8F5] border border-[#E5E0D8] rounded-xl font-mono focus:ring-2 focus:ring-[#1E3A8A] focus:outline-none"
                 />
               </div>
 
               <div className="pt-2 flex items-center gap-3">
                 <button
                   type="submit"
-                  className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 shadow-sm transition-colors"
+                  className="px-5 py-2.5 bg-[#1E3A8A] hover:bg-[#1D4ED8] text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 shadow-sm transition-colors"
                 >
                   <Save className="w-4 h-4" />
                   <span>บันทึกการตั้งค่า Firebase</span>
                 </button>
                 {saveSuccess && (
-                  <span className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1 animate-in fade-in">
+                  <span className="text-xs text-blue-700 font-semibold flex items-center gap-1 animate-in fade-in">
                     <Check className="w-4 h-4" />
                     <span>บันทึกและเริ่มซิงก์เรียบร้อยแล้ว</span>
                   </span>

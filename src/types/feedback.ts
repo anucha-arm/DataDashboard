@@ -82,15 +82,15 @@ export interface InterpretationResult {
   description: string;
 }
 
-export function getInterpretation(score: number): InterpretationResult {
+export function getInterpretation(score: number, isDark: boolean = false): InterpretationResult {
   if (score >= 4.51) {
     return {
       label: 'มากที่สุด',
       englishLabel: 'Excellent / Highest',
       color: 'navy',
-      bgColor: 'bg-blue-950/80',
-      textColor: 'text-blue-200',
-      borderColor: 'border-blue-600',
+      bgColor: isDark ? 'bg-blue-950/80' : 'bg-blue-50',
+      textColor: isDark ? 'text-blue-200' : 'text-[#1E3A8A]',
+      borderColor: isDark ? 'border-blue-600' : 'border-blue-300',
       description: 'ผลการประเมินอยู่ในเกณฑ์ยอดเยี่ยม ผู้เข้าร่วมมีความพึงพอใจสูงสุด'
     };
   } else if (score >= 3.51) {
@@ -98,9 +98,9 @@ export function getInterpretation(score: number): InterpretationResult {
       label: 'มาก',
       englishLabel: 'Good / High',
       color: 'blue',
-      bgColor: 'bg-slate-850',
-      textColor: 'text-sky-200',
-      borderColor: 'border-sky-700',
+      bgColor: isDark ? 'bg-slate-800' : 'bg-sky-50',
+      textColor: isDark ? 'text-sky-200' : 'text-sky-900',
+      borderColor: isDark ? 'border-sky-700' : 'border-sky-300',
       description: 'ผลการประเมินอยู่ในเกณฑ์ดี บรรลุวัตถุประสงค์การจัดอบรมเป็นอย่างดี'
     };
   } else if (score >= 2.51) {
@@ -108,9 +108,9 @@ export function getInterpretation(score: number): InterpretationResult {
       label: 'ปานกลาง',
       englishLabel: 'Moderate / Fair',
       color: 'beige',
-      bgColor: 'bg-[#29241c]',
-      textColor: 'text-[#f5ebd9]',
-      borderColor: 'border-[#8c7a62]',
+      bgColor: isDark ? 'bg-[#29241c]' : 'bg-[#FAF5ED]',
+      textColor: isDark ? 'text-[#f5ebd9]' : 'text-[#8C6D3F]',
+      borderColor: isDark ? 'border-[#8c7a62]' : 'border-[#E5D7BA]',
       description: 'ผลการประเมินอยู่ในเกณฑ์ปานกลาง มีจุดที่สามารถปรับปรุงพัฒนาได้'
     };
   } else if (score >= 1.51) {
@@ -118,9 +118,9 @@ export function getInterpretation(score: number): InterpretationResult {
       label: 'น้อย',
       englishLabel: 'Poor / Low',
       color: 'gray',
-      bgColor: 'bg-slate-800',
-      textColor: 'text-slate-300',
-      borderColor: 'border-slate-600',
+      bgColor: isDark ? 'bg-slate-800' : 'bg-slate-100',
+      textColor: isDark ? 'text-slate-300' : 'text-slate-800',
+      borderColor: isDark ? 'border-slate-600' : 'border-slate-300',
       description: 'ผลการประเมินอยู่ในเกณฑ์น้อย ควรทบทวนเนื้อหาและวิธีการนำเสนอ'
     };
   } else {
@@ -128,9 +128,9 @@ export function getInterpretation(score: number): InterpretationResult {
       label: 'น้อยที่สุด',
       englishLabel: 'Lowest / Urgent Attention',
       color: 'slate',
-      bgColor: 'bg-slate-900',
-      textColor: 'text-slate-400',
-      borderColor: 'border-slate-700',
+      bgColor: isDark ? 'bg-slate-900' : 'bg-rose-50',
+      textColor: isDark ? 'text-slate-400' : 'text-rose-800',
+      borderColor: isDark ? 'border-slate-700' : 'border-rose-300',
       description: 'ผลการประเมินต้องปรับปรุงอย่างเร่งด่วน'
     };
   }

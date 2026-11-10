@@ -68,18 +68,18 @@ export default function App() {
         </div>
       )}
 
-      {/* Mode Switcher Floating Ribbon (Formal Navy, Slate, and Beige theme) */}
-      <div className="sticky top-0 z-40 bg-[#070E1E]/90 backdrop-blur-md border-b border-[#1E2E4E] py-2 px-4 text-slate-100">
+      {/* Mode Switcher Floating Ribbon (Formal Light Theme) */}
+      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#E5E0D8] py-2 px-4 text-slate-800 shadow-2xs transition-colors">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
           
           {/* Segmented Mode Control */}
-          <div className="flex items-center gap-1 bg-[#101C33] p-1 rounded-xl border border-[#1E2E4E]">
+          <div className="flex items-center gap-1 bg-[#FAF8F5] p-1 rounded-xl border border-[#E5E0D8]">
             <button
               onClick={() => handleModeChange('dashboard')}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-all ${
                 currentMode === 'dashboard'
-                  ? 'bg-[#1D4ED8] text-white shadow-xs'
-                  : 'text-[#94A3B8] hover:text-white'
+                  ? 'bg-[#1E3A8A] text-white shadow-xs'
+                  : 'text-slate-600 hover:text-[#0F1E36]'
               }`}
             >
               <LayoutDashboard className="w-3.5 h-3.5" />
@@ -90,8 +90,8 @@ export default function App() {
               onClick={() => handleModeChange('survey')}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-all ${
                 currentMode === 'survey'
-                  ? 'bg-[#1D4ED8] text-white shadow-xs'
-                  : 'text-[#94A3B8] hover:text-white'
+                  ? 'bg-[#1E3A8A] text-white shadow-xs'
+                  : 'text-slate-600 hover:text-[#0F1E36]'
               }`}
             >
               <Smartphone className="w-3.5 h-3.5" />
@@ -103,16 +103,16 @@ export default function App() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsQrModalOpen(true)}
-              className="px-2.5 py-1.5 text-xs font-medium text-[#EDE7DC] hover:bg-[#121E36] rounded-lg flex items-center gap-1.5 transition-colors border border-[#1E2E4E]"
+              className="px-2.5 py-1.5 text-xs font-medium text-slate-700 bg-white hover:bg-[#FAF8F5] rounded-lg flex items-center gap-1.5 transition-colors border border-[#E5E0D8] shadow-2xs"
               title="แสดง QR Code สำหรับผู้เข้าอบรม"
             >
-              <QrCode className="w-3.5 h-3.5 text-amber-200" />
+              <QrCode className="w-3.5 h-3.5 text-[#1E3A8A]" />
               <span className="hidden sm:inline">QR Code ผู้ตอบ</span>
             </button>
 
             <button
               onClick={() => setIsDeployGuideOpen(true)}
-              className="px-2.5 py-1.5 text-xs font-medium text-[#D4AF37] hover:bg-[#1D2B44] rounded-lg flex items-center gap-1.5 transition-colors border border-[#3E382C]"
+              className="px-2.5 py-1.5 text-xs font-semibold text-[#8C6D3F] bg-[#FAF5ED] hover:bg-[#F5EFEB] rounded-lg flex items-center gap-1.5 transition-colors border border-[#E5D7BA] shadow-2xs"
               title="ดูโค้ดแยก 2 ไฟล์ (survey.html & dashboard.html) และวิธีตั้งค่า Firebase"
             >
               <BookOpen className="w-3.5 h-3.5" />
