@@ -1,0 +1,6 @@
+{
+  "name": "Live Feedback & Real-Time Training Satisfaction Dashboard",
+  "description": "ระบบแบบประเมินความพึงพอใจการอบรมแบบเรียลไทม์ พร้อมหน้า Dashboard จอโปรเจกเตอร์ QR Code และส่งออกข้อมูล CSV",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
